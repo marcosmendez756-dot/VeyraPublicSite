@@ -1,44 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Veyra — Build Anything</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #10111a;
-      color: #f5f5fa;
-      text-align: center;
-    }
-    header { padding: 70px 20px; }
-    h1 { font-size: 48px; margin-bottom: 12px; }
-    p { color: #b9bbcc; line-height: 1.7; }
-    .button {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 22px;
-      background: #8b7cff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-    section { padding: 25px 20px; }
-    footer { padding: 25px; color: #888; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b12">
+<meta name="description" content="Veydris Corps — independent technology, software, and game development. Discover Veyra and our vision for the future.">
+<title>Veydris Corps — Technology Without Limits</title>
+<style>
+:root {
+  --bg:#090a10;
+  --panel:#11131e;
+  --text:#f5f5ff;
+  --muted:#a6a9bf;
+  --accent:#a394ff;
+  --line:#27283a;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+a { color:inherit; text-decoration:none; }
+nav {
+  position:sticky;
+  top:0;
+  z-index:5;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:18px 7%;
+  background:#090a10eF;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+}
+.brand { font-weight:800; letter-spacing:1px; }
+.brand span { color:var(--accent); }
+.links { display:flex; gap:22px; flex-wrap:wrap; font-size:14px; color:var(--muted); }
+.links a:hover { color:white; }
+.hero {
+  min-height:590px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:90px 7%;
+  background:
+    radial-gradient(ellipse at 50% 0%,#7561ff26,transparent 58%),
+    var(--bg);
+}
+.eyebrow {
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:800;
+}
+h1 { font-size:clamp(42px,8vw,82px); line-height:1.08; margin:20px 0; letter-spacing:-3px; }
+h1 span { color:var(--accent); }
+.hero p { max-width:700px; color:var(--muted); font-size:18px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:26px; }
+.btn {
+  display:inline-block;
+  padding:12px 20px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  font-weight:700;
+}
+.btn.primary { background:var(--accent); color:#11101c; border-color:var(--accent); }
+.btn:hover { transform:translateY(-2px); }
+section { padding:76px 7%; scroll-margin-top:75px; }
+.section-head { max-width:720px; margin-bottom:32px; }
+h2 { font-size:clamp(28px,5vw,42px); line-height:1.2; margin:10px 0 14px; }
+h3 { margin-top:0; }
+p { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr)); gap:18px; }
+.card {
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:linear-gradient(145deg,#141522,#0e0f17);
+}
+.card p { font-size:15px; }
+.icon {
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#a394ff19;
+  color:var(--accent);
+  font-size:22px;
+  margin-bottom:20px;
+}
+.tag {
+  display:inline-block;
+  padding:4px 9px;
+  border-radius:30px;
+  background:#a394ff18;
+  color:var(--accent);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.feature {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:30px;
+  align-items:center;
+}
+.feature-box {
+  padding:30px;
+  border:1px solid #373052;
+  border-radius:18px;
+  background:radial-gradient(circle at top right,#8b7cff20,transparent 65%),var(--panel);
+}
+.feature-logo { font-size:48px; font-weight:900; letter-spacing:-2px; }
+.feature-logo span { color:var(--accent); }
+ul { padding-left:20px; color:var(--muted); }
+li { margin:8px 0; }
+.timeline { border-left:2px solid #38314f; padding-left:24px; }
+.timeline article { position:relative; margin-bottom:26px; }
+.timeline article::before {
+  content:"";
+  position:absolute;
+  left:-31px;
+  top:9px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.notice {
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#11131e;
+}
+footer {
+  border-top:1px solid var(--line);
+  padding:35px 7%;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  color:var(--muted);
+  font-size:13px;
+}
+@media(max-width:600px) {
+  nav { align-items:flex-start; flex-direction:column; }
+  .links { gap:14px; }
+  h1 { letter-spacing:-1.5px; }
+  .hero { min-height:500px; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Veyra</h1>
-    <p>One language. Endless possibilities.</p>
-    <p>A general-purpose programming language built for creating websites, games, apps, bots, and more.</p>
-    <a class="button" href="#about">Discover Veyra</a>
-  </header>
-  <section id="about">
-    <h2>Build Without Limits</h2>
-    <p>Our goal is to make programming powerful, accessible, and beginner-friendly.</p>
-  </section>
-  <footer>Veyra · A language in development</footer>
+
+<nav>
+  <a class="brand" href="#">VEYDRIS<span> CORPS</span></a>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#divisions">Focus</a>
+    <a href="#projects">Projects</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Independent technology & creative development</div>
+  <h1>Build what<br><span>comes next.</span></h1>
+  <p>
+    We envision a future where powerful technology, thoughtful software,
+    and creative worlds give people more ways to build, explore, and create.
+  </p>
+  <div class="actions">
+    <a class="btn primary" href="#projects">Explore our projects ↗</a>
+    <a class="btn" href="#about">Discover Veydris</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-head">
+    <div class="eyebrow">Who we are</div>
+    <h2>Big ideas. Built with purpose.</h2>
+    <p>
+      Veydris Corps is a developing independent technology and creative
+      development initiative. Our long-term vision spans software,
+      developer tools, games, and digital experiences.
+    </p>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="icon">⌘</div>
+      <h3>Engineering</h3>
+      <p>Build useful software and dependable tools designed to grow over time.</p>
+    </article>
+    <article class="card">
+      <div class="icon">◇</div>
+      <h3>Innovation</h3>
+      <p>Explore new ideas, experiment, learn, and turn concepts into working projects.</p>
+    </article>
+    <article class="card">
+      <div class="icon">✳</div>
+      <h3>Creative worlds</h3>
+      <p>Bring technology and imagination together through games and interactive experiences.</p>
+    </article>
+  </div>
+</section>
+
+<section id="divisions">
+  <div class="section-head">
+    <div class="eyebrow">Areas of focus</div>
+    <h2>Different disciplines. One vision.</h2>
+    <p>Our planned areas of development cover the tools and experiences people use to create.</p>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="icon">⌨</div>
+      <h3>Developer Technology</h3>
+      <p>Programming languages, developer utilities, automation, and software infrastructure.</p>
+    </article>
+    <article class="card">
+      <div class="icon">▣</div>
+      <h3>Software & Applications</h3>
+      <p>Practical digital tools, web applications, and services built around real needs.</p>
+    </article>
+    <article class="card">
+      <div class="icon">△</div>
+      <h3>Games & Interactive Media</h3>
+      <p>Game concepts, interactive systems, and creative digital worlds.</p>
+    </article>
+    <article class="card">
+      <div class="icon">⌘</div>
+      <h3>Automation & Systems</h3>
+      <p>Tools that connect workflows, simplify repetitive tasks, and support online communities.</p>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head">
+    <div class="eyebrow">Projects</div>
+    <h2>Ideas in development.</h2>
+    <p>These projects represent our direction and ongoing work—not claims that every planned feature is already available.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-box">
+      <div class="feature-logo">V<span>eyra</span></div>
+      <p class="tag">Developer language · Early prototype</p>
+      <h2>A language for building more.</h2>
+      <p>
+        Veyra is an early-stage general-purpose programming language project.
+        Its long-term goal is to help people create software, websites,
+        games, bots, and applications through one approachable language.
+      </p>
+      <ul>
+        <li>Building the language runtime</li>
+        <li>Expanding core programming features</li>
+        <li>Planning libraries and developer tools</li>
+      </ul>
+    </div>
+    <div>
+      <div class="tag">The bigger picture</div>
+      <h2>Tools that empower creators.</h2>
+      <p>
+        Veydris Corps aims to develop an ecosystem of technology and creative
+        projects. We want tools to be approachable for beginners while
+        leaving room for ambitious projects.
+      </p>
+      <p>Our focus is on learning, building, testing, and improving—one release at a time.</p>
+    </div>
+  </div>
+  <div class="grid" style="margin-top:22px">
+    <article class="card">
+      <span class="tag">Planned</span>
+      <h3>Veydris Developer Tools</h3>
+      <p>Utilities and workflows intended to make creating and maintaining software easier.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Exploration</span>
+      <h3>Games & Experiences</h3>
+      <p>Ideas for interactive worlds, game systems, and community experiences.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Long-term vision</span>
+      <h3>Connected Ecosystem</h3>
+      <p>A future collection of tools and services designed to work together where useful.</p>
+    </article>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="section-head">
+    <div class="eyebrow">The roadmap</div>
+    <h2>Built in stages. Made to grow.</h2>
+    <p>We believe in making progress through real milestones instead of promising everything at once.</p>
+  </div>
+  <div class="timeline">
+    <article>
+      <h3>01 — Foundations</h3>
+      <p>Build core programming tools, establish project structure, and test early prototypes.</p>
+    </article>
+    <article>
+      <h3>02 — Capabilities</h3>
+      <p>Expand language features, libraries, development workflows, and useful integrations.</p>
+    </article>
+    <article>
+      <h3>03 — Creator tools</h3>
+      <p>Work toward approachable tools for web development, automation, and game projects.</p>
+    </article>
+    <article>
+      <h3>04 — Public ecosystem</h3>
+      <p>Grow documentation, installation options, project releases, and community resources as they become ready.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="notice">
+    <div class="eyebrow">Transparency matters</div>
+    <h2>Currently in development.</h2>
+    <p>
+      Veydris Corps and Veyra are developing projects. Features described
+      as planned or part of our vision are not necessarily available today.
+      This website will evolve as working releases become available.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div><strong>VEYDRIS CORPS</strong><br>Technology. Creativity. Possibility.</div>
+  <div>Veyra is an early-stage project.<br>© 2026 Veydris Corps project site.</div>
+</footer>
+
 </body>
 </html>
